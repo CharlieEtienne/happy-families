@@ -17,6 +17,7 @@ class Families extends Component
     public array $families = [];
     public array $family_members = [];
     public array $family_member = [];
+    public string $verso_text = '';
 
     public function mount()
     {

@@ -80,6 +80,29 @@ div[id^=font-picker] ul li button.active-font {
 .cards-container.colorful .bg9-alt{background-color:  #059669;} /* bg-emerald-600 */
 .cards-container.colorful .bg10-alt{background-color: #ca8a04;} /* bg-yellow-600 */
 
+.cards-container.gradient .bg1{background-image: linear-gradient(-45deg, #f59e0b,#eab308);} /* bg-amber-500 */
+.cards-container.gradient .bg2{background-image: linear-gradient(-45deg, #84cc16,#22c55e);} /* bg-lime-500 */
+.cards-container.gradient .bg3{background-image: linear-gradient(-45deg, #d946ef,#ec4899);} /* bg-fuschia-500 */
+.cards-container.gradient .bg4{background-image: linear-gradient(-45deg, #6366f1,#8b5cf6);} /* bg-indigo-500 */
+.cards-container.gradient .bg5{background-image: linear-gradient(-45deg, #f97316,#f59e0b);} /* bg-orange-500 */
+.cards-container.gradient .bg6{background-image: linear-gradient(-45deg, #06b6d4,#0ea5e9);} /* bg-cyan-500 */
+.cards-container.gradient .bg7{background-image: linear-gradient(-45deg, #f43f5e,#ef4444);} /* bg-rose-500 */
+.cards-container.gradient .bg8{background-image: linear-gradient(-45deg, #a855f7,#d946ef);} /* bg-purple-500 */
+.cards-container.gradient .bg9{background-image: linear-gradient(-45deg, #10b981,#14b8a6);} /* bg-emerald-500 */
+.cards-container.gradient .bg10{background-image: linear-gradient(-45deg, #eab308, #e7c208);} /* bg-yellow-500 */
+
+.cards-container.gradient .bg1-alt{background-image: linear-gradient(-45deg, #d97706,#ca8a04);} /* bg-amber-600 */
+.cards-container.gradient .bg2-alt{background-image: linear-gradient(-45deg, #65a30d,#16a34a);} /* bg-lime-600 */
+.cards-container.gradient .bg3-alt{background-image: linear-gradient(-45deg, #c026d3,#db2777);} /* bg-fuschia-600 */
+.cards-container.gradient .bg4-alt{background-image: linear-gradient(-45deg, #4f46e5,#7c3aed);} /* bg-indigo-600 */
+.cards-container.gradient .bg5-alt{background-image: linear-gradient(-45deg, #ea580c,#d97706);} /* bg-orange-600 */
+.cards-container.gradient .bg6-alt{background-image: linear-gradient(-45deg, #0891b2,#0284c7);} /* bg-cyan-600 */
+.cards-container.gradient .bg7-alt{background-image: linear-gradient(-45deg, #e11d48,#dc2626);} /* bg-rose-600 */
+.cards-container.gradient .bg8-alt{background-image: linear-gradient(-45deg, #9333ea,#c026d3);} /* bg-purple-600 */
+.cards-container.gradient .bg9-alt{background-image: linear-gradient(-45deg, #059669,#0d9488);} /* bg-emerald-600 */
+.cards-container.gradient .bg10-alt{background-image: linear-gradient(-45deg, #ca8a04, #c89a04);} /* bg-yellow-600 */
+
+
 .cards-container.light .bg1{border:  3px solid #f59e0b;background-color:#fffbeb; color:#d97706;} /* bg-amber-500 */
 .cards-container.light .bg2{border:  3px solid #84cc16;background-color:#f7fee7; color:#65a30d;} /* bg-lime-500 */
 .cards-container.light .bg3{border:  3px solid #d946ef;background-color:#fdf4ff; color:#c026d3;} /* bg-fuschia-500 */
