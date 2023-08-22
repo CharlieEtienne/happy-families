@@ -12,202 +12,202 @@
     verso__coefficient: 0.5,
     verso__shortTextLimit: 14
 }">
-    <div class="grid grid-cols-3 gap-4">
-        <div class="form-control w-full max-w-md">
-            <label for="families_count" class="label"> <span class="label-text text-xl">How many families do you want to create?</span>
-            </label>
 
-            <div class="flex mt-3">
-                <input type="range" min="1" max="10" class="range range-xs range-primary mt-2"
-                       wire:model.blur="families_count"/>
+    <div class="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col items-center justify-center">
 
-                <input
-                    id="families_count"
-                    class="input input-bordered input-sm max-w-md w-20 ml-4"
-                    name="families_count"
-                    type="number"
-                    wire:model.blur="families_count"
-                    required>
+            <div class="flex mt-2 flex-col items-start">
+                <label class="cursor-pointer label">
+                    <span class="label-text">Recto / Verso</span>
+                    <input type="checkbox" class="toggle toggle-primary ml-4" x-model="verso"/>
+                </label>
             </div>
 
-        </div>
+            {{-- <button wire:click="generate()">DEBUG</button> --}}
 
-        <div class="form-control w-full max-w-md">
-            <label for="members_per_family" class="label"> <span class="label-text text-xl">How many members for each family?</span>
-            </label>
+            {{-- =============================================================== --}}
+            {{-- ============================ RECTO ============================ --}}
+            {{-- =============================================================== --}}
+            <div class="cards-container recto grid grid-cols-3 gap-4 my-12 mx-auto apply-font bg-white rounded-lg p-4"
+                 style="max-width: 21cm;"
+                 :class="[theme, verso ? 'isVerso' : 'isRecto']"
+                 x-show="!verso"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-x-12"
+                 x-transition:enter-end="opacity-100 transform translate-x-0"
+                 x-transition:leave="transition ease-out duration-300"
+                 x-transition:leave-start="opacity-100 transform translate-x-0"
+                 x-transition:leave-end="opacity-0 transform -translate-x-12">
+                @for ($current_family = 1; $current_family <= $families_count; $current_family++)
+                    @for ($family_member = 1; $family_member <= $members_per_family; $family_member++)
+                        <div class="card bg{{$current_family}} text-white" style="min-height: 9cm;" :style="{ 'border-radius': radius+'px' }">
+                            <div class="card-body justify-between" :style="{ 'padding': padding+'px' }">
 
-            <div class="flex mt-3">
-                <input type="range" min="1" max="10" class="range range-xs range-primary mt-2"
-                       wire:model.blur="members_per_family"/>
+                                <h2 class="card-title text-center self-center">
+                                    {{$family_name = $families[$current_family]['name'] ?? "Family #" . $current_family}}
+                                </h2>
 
-                <input
-                    id="members_per_family"
-                    class="input input-bordered input-sm max-w-md w-20 ml-4"
-                    name="members_per_family"
-                    type="number"
-                    wire:model.blur="members_per_family"
-                    required>
-            </div>
+                                <label>
+                                    <textarea rows="1"
+                                              x-data="textResize()"
+                                              x-on:input="handleInput"
+                                              x-bind:style="{ fontSize: fontSize + 'px', height: textBoxHeight }"
+                                              placeholder="Click to edit"
+                                              class="input input-ghost bg-opacity-0 w-full max-w-xs text-center self-center text-3xl placeholder-gray-200 resize-none overflow-hidden"
+                                              wire:model.blur="families.{{$current_family}}.family_members.{{$family_member}}.name">
+                                    </textarea>
+                                </label>
 
-        </div>
-
-        <div class="text-xl">{{$families_count * $members_per_family}} cards</div>
-
-    </div>
-
-    <form wire:submit>
-    @for ($current_family = 1; $current_family <= $families_count; $current_family++)
-        <div class="flex">
-            <label for="family.{{$current_family}}.name" class="label">
-                <span class="label-text">Name of family #{{$current_family}}</span>
-            </label>
-            <input
-                class="input input-bordered input-sm max-w-md ml-4 mt-2"
-                name="family.{{$current_family}}.name"
-                type="text"
-                 wire:model.blur="families.{{$current_family}}.name" >
-        </div>
-    @endfor
-    </form>
-
-    <h2>Settings</h2>
-    <div class="settings">
-        {{-- Font family setting --}}
-        <div class="flex mt-2">
-            <label for="border-radius" class="label">
-                <span class="label-text">Font family</span>
-            </label>
-            <div class="ml-4" id="font-picker" wire:ignore></div>
-        </div>
-
-        {{-- Border Radius setting --}}
-        <div class="flex mt-2">
-            <label for="border-radius" class="label">
-                <span class="label-text">Border Radius (px)</span>
-            </label>
-            <input
-                class="input input-bordered input-sm max-w-md ml-4 mt-2"
-                type="number" min="0" max="50" x-model="radius" id="border-radius">
-        </div>
-
-        {{-- Padding setting --}}
-        <div class="flex mt-2">
-            <label for="padding" class="label">
-                <span class="label-text">Padding (px)</span>
-            </label>
-            <input
-                class="input input-bordered input-sm max-w-md ml-4 mt-2"
-                type="number" min="0" max="50" x-model="padding" id="padding">
-        </div>
-
-        {{-- Theme setting --}}
-        <div class="flex mt-2">
-            <label for="theme" class="label">
-                <span class="label-text">Theme</span>
-            </label>
-            <select x-model="theme" id="theme" class="select select-bordered select-sm max-w-md ml-4 mt-2">
-                <option value="colorful" selected>Colorful</option>
-                <option value="gradient">Gradient</option>
-                <option value="light">Light</option>
-            </select>
-        </div>
-
-    </div>
-
-    <div class="flex flex-col">
-        <div class="form-control w-52">
-            <label class="cursor-pointer label">
-                <span class="label-text">Recto / Verso</span>
-                <input type="checkbox" class="toggle toggle-primary" x-model="verso"/>
-            </label>
-        </div>
-    </div>
-
-    {{-- <button wire:click="generate()">DEBUG</button> --}}
-
-    {{-- =============================================================== --}}
-    {{-- ============================ RECTO ============================ --}}
-    {{-- =============================================================== --}}
-    <div class="cards-container recto grid grid-cols-3 gap-4 my-12 mx-auto apply-font bg-white rounded-lg p-4"
-         style="max-width: 21cm;"
-         :class="[theme, verso ? 'isVerso' : 'isRecto']"
-         x-show="!verso"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 transform -translate-x-12"
-         x-transition:enter-end="opacity-100 transform translate-x-0"
-         x-transition:leave="transition ease-out duration-300"
-         x-transition:leave-start="opacity-100 transform translate-x-0"
-         x-transition:leave-end="opacity-0 transform -translate-x-12">
-        @for ($current_family = 1; $current_family <= $families_count; $current_family++)
-            @for ($family_member = 1; $family_member <= $members_per_family; $family_member++)
-                <div class="card bg{{$current_family}} text-white" style="min-height: 9cm;" :style="{ 'border-radius': radius+'px' }">
-                    <div class="card-body justify-between" :style="{ 'padding': padding+'px' }">
-
-                        <h2 class="card-title text-center self-center">
-                            {{$family_name = $families[$current_family]['name'] ?? "Family #" . $current_family}}
-                        </h2>
-
-                        <div x-data="textResize()">
-                            <label>
-                                <textarea rows="1"
-                                          x-data="textResize()"
-                                          x-on:input="handleInput"
-                                          x-bind:style="{ fontSize: fontSize + 'px', height: textBoxHeight }"
-                                          placeholder="Click to edit"
-                                          class="input input-ghost bg-opacity-0 w-full max-w-xs text-center self-center text-3xl placeholder-gray-200 resize-none overflow-hidden"
-                                          wire:model.blur="families.{{$current_family}}.family_members.{{$family_member}}.name"></textarea>
-                            </label>
-                        </div>
-
-                        <div class="card-actions overflow-hidden">
-                            @for ($members_pill = 1; $members_pill <= $members_per_family; $members_pill++)
-                                <div class="badge bg{{$current_family}}-alt border-white text-white overflow-hidden min-h-6 h-auto">
-                                    {{$families[$current_family]['family_members'][$members_pill]['name'] ?? "Name #" . $members_pill}}
+                                <div class="card-actions overflow-hidden">
+                                    @for ($members_pill = 1; $members_pill <= $members_per_family; $members_pill++)
+                                        <div class="badge bg{{$current_family}}-alt border-white text-white overflow-hidden min-h-6 h-auto max-w-full inline-block whitespace-nowrap overflow-ellipsis">
+                                            {{$families[$current_family]['family_members'][$members_pill]['name'] ?? "Name #" . $members_pill}}
+                                        </div>
+                                    @endfor
                                 </div>
-                            @endfor
-                        </div>
 
+                            </div>
+                        </div>
+                    @endfor
+                @endfor
+            </div>
+
+            {{-- =============================================================== --}}
+            {{-- ============================ VERSO ============================ --}}
+            {{-- =============================================================== --}}
+            <div class="cards-container verso grid grid-cols-3 gap-4 my-12 mx-auto apply-font bg-white rounded-lg p-4"
+                 style="max-width: 21cm;"
+                 :class="[theme, verso ? 'isVerso' : 'isRecto']"
+                 x-show="verso"
+                 x-transition:enter="transition ease-out duration-300 delay-300"
+                 x-transition:enter-start="opacity-0 transform translate-x-12"
+                 x-transition:enter-end="opacity-100 transform translate-x-0"
+                 x-transition:leave="transition ease-out duration-300"
+                 x-transition:leave-start="opacity-100 transform translate-x-0"
+                 x-transition:leave-end="opacity-0 transform translate-x-12"
+                 x-data="{versoTextareas: []}"
+                 x-ref="versoTextareasContainer">
+                @for ($current_family = 1; $current_family <= $families_count; $current_family++)
+                    @for ($family_member = 1; $family_member <= $members_per_family; $family_member++)
+                        <div class="card bg-primary text-white" style="min-height: 9cm;" :style="{ 'border-radius': radius+'px' }">
+                            <div class="card-body justify-center" :style="{ 'padding': padding+'px' }">
+                                <label>
+                                    <textarea
+                                        rows="1"
+                                        x-data="textResize('verso')"
+                                        x-on:input="handleInput"
+                                        x-bind:style="{ fontSize: verso__fontSize + 'px', height: verso__textBoxHeight }"
+                                        placeholder="Click to edit"
+                                        class="verso-textbox input input-ghost bg-opacity-0 w-full max-w-xs text-center self-center text-3xl placeholder-gray-200 resize-none overflow-hidden"
+                                        wire:model.debounce.500ms="verso_text">
+                                    </textarea>
+                                </label>
+                            </div>
+                        </div>
+                    @endfor
+                @endfor
+            </div>
+        </div>
+        <div class="drawer-side p-4">
+            <label for="my-drawer-2" class="drawer-overlay"></label>
+
+            <div class="{{--grid grid-cols-3 gap-4--}}">
+                <div class="form-control w-full max-w-md">
+                    <label for="families_count" class="label">
+                        <span class="label-text">How many families do you want to create?</span>
+                    </label>
+
+                    <div class="flex mt-2 items-center" x-data>
+                        <input type="range" min="1" max="10"
+                               class="range range-xs range-primary max-w-[130px]"
+                               wire:model.live.debounce.250="families_count"/>
+                        <span class="label-text ml-3" x-text="$wire.families_count"></span>
                     </div>
+
+                    <label for="members_per_family" class="label">
+                        <span class="label-text">How many members for each family?</span>
+                    </label>
+
+                    <div class="flex mt-3">
+                        <input type="range" min="1" max="10"
+                               class="range range-xs range-primary max-w-[130px]"
+                               wire:model.live.debounce.250="members_per_family"/>
+                        <span class="label-text ml-3" x-text="$wire.members_per_family"></span>
+                    </div>
+
                 </div>
-          @endfor
-        @endfor
-    </div>
 
-    {{-- =============================================================== --}}
-    {{-- ============================ VERSO ============================ --}}
-    {{-- =============================================================== --}}
-    <div class="cards-container verso grid grid-cols-3 gap-4 my-12 mx-auto apply-font bg-white rounded-lg p-4"
-         style="max-width: 21cm;"
-         :class="[theme, verso ? 'isVerso' : 'isRecto']"
-         x-show="verso"
-         x-transition:enter="transition ease-out duration-300 delay-300"
-         x-transition:enter-start="opacity-0 transform translate-x-12"
-         x-transition:enter-end="opacity-100 transform translate-x-0"
-         x-transition:leave="transition ease-out duration-300"
-         x-transition:leave-start="opacity-100 transform translate-x-0"
-         x-transition:leave-end="opacity-0 transform translate-x-12"
-         x-data="{versoTextareas: []}"
-         x-ref="versoTextareasContainer">
-        @for ($current_family = 1; $current_family <= $families_count; $current_family++)
-            @for ($family_member = 1; $family_member <= $members_per_family; $family_member++)
-                <div class="card bg-primary text-white" style="min-height: 9cm;" :style="{ 'border-radius': radius+'px' }">
-                    <div class="card-body justify-center" :style="{ 'padding': padding+'px' }">
+                <div class="text-xl">{{$families_count * $members_per_family}} cards</div>
 
-                        <div>
-                            <label>
-                                <textarea rows="1"
-                                          x-data="textResize('verso')"
-                                          x-on:input="handleInput"
-                                          x-bind:style="{ fontSize: verso__fontSize + 'px', height: verso__textBoxHeight }"
-                                          placeholder="Click to edit"
-                                          class="verso-textbox input input-ghost bg-opacity-0 w-full max-w-xs text-center self-center text-3xl placeholder-gray-200 resize-none overflow-hidden"
-                                          wire:model.debounce.500ms="verso_text"></textarea>
-                            </label>
-                        </div>
-                    </div>
+            </div>
+
+            <form wire:submit>
+            @for ($current_family = 1; $current_family <= $families_count; $current_family++)
+                <div class="flex">
+                    <label for="family.{{$current_family}}.name" class="label">
+                        <span class="label-text">Name of family #{{$current_family}}</span>
+                    </label>
+                    <input
+                        class="input input-bordered input-sm max-w-md ml-4 mt-2"
+                        name="family.{{$current_family}}.name"
+                        type="text"
+                         wire:model.blur="families.{{$current_family}}.name" >
                 </div>
             @endfor
-        @endfor
+            </form>
+
+            {{-- =============================================================== --}}
+            {{-- =========================== SETTINGS ========================== --}}
+            {{-- =============================================================== --}}
+            <h2 class="text-2xl">Settings</h2>
+
+            <div class="settings">
+                {{-- Font family setting --}}
+                <div class="flex mt-2 items-center">
+                    <label for="border-radius" class="label">
+                        <span class="label-text">Font family</span>
+                    </label>
+                    <div class="ml-4" id="font-picker" wire:ignore></div>
+                </div>
+
+                {{-- Border Radius setting --}}
+                <div class="flex mt-2 items-center">
+                    <label for="border-radius" class="label">
+                        <span class="label-text">Border Radius (px)</span>
+                    </label>
+                    <input
+                        class="range range-xs range-primary max-w-[130px] ml-4"
+                        type="range" min="0" max="50" x-model="radius" id="border-radius">
+                    <span class="label-text ml-3" x-text="radius + 'px'"></span>
+                </div>
+
+                {{-- Padding setting --}}
+                <div class="flex mt-2 items-center">
+                    <label for="padding" class="label">
+                        <span class="label-text">Padding (px)</span>
+                    </label>
+                    <input
+                        class="range range-xs range-primary max-w-[130px] ml-4"
+                        type="range" min="0" max="50" x-model="padding" id="padding">
+                    <span class="label-text ml-3" x-text="padding + 'px'"></span>
+                </div>
+
+                {{-- Theme setting --}}
+                <div class="flex mt-2 items-center">
+                    <label for="theme" class="label">
+                        <span class="label-text">Theme</span>
+                    </label>
+                    <select x-model="theme" id="theme" class="select select-bordered select-sm max-w-md ml-4">
+                        <option value="colorful" selected>Colorful</option>
+                        <option value="gradient">Gradient</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
     <script>
