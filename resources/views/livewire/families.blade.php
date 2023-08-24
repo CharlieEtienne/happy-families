@@ -146,6 +146,7 @@
                 </label>
                 <input type="range" min="1" max="10"
                        class="range range-xs range-primary ml-4"
+                       id="families_count"
                        wire:model.live.debounce.250="families_count"/>
                 <span class="label-text ml-3" x-text="$wire.families_count"></span>
 
@@ -158,6 +159,7 @@
                 </label>
                 <input type="range" min="1" max="10"
                        class="range range-xs range-primary ml-4"
+                       id="members_per_family"
                        wire:model.live.debounce.250="members_per_family"/>
                 <span class="label-text ml-3" x-text="$wire.members_per_family"></span>
             </div>
@@ -221,7 +223,7 @@
                         </label>
                         <input
                             class="input input-bordered input-sm max-w-md ml-4 mt-2"
-                            name="family.{{$current_family}}.name"
+                            id="family.{{$current_family}}.name"
                             type="text"
                             wire:model.blur="families.{{$current_family}}.name" >
                     </div>
