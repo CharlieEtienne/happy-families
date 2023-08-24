@@ -18,7 +18,7 @@
         <div class="drawer-content flex flex-col items-center justify-center">
 
             <div class="flex py-2 flex-col items-center w-full sticky bg-gray-100 z-50 top-0 box-gradient-shadow-custom">
-                <label class="cursor-pointer label">
+                <label for="verso" class="cursor-pointer label">
 
                     <span class="label-text" :class="!verso ? 'text-primary mx-1 font-extrabold relative inline-block stroke-current' : ''">
                         Recto
@@ -28,7 +28,7 @@
                         </svg>
                     </span>
 
-                    <input type="checkbox" class="toggle toggle-primary mx-4" x-model="verso"/>
+                    <input id="verso" type="checkbox" class="toggle toggle-primary mx-4" x-model="verso"/>
 
                     <span class="label-text" :class="verso ? 'text-primary mx-1 font-extrabold relative inline-block stroke-current' : ''">
                         Verso
@@ -74,6 +74,7 @@
                                                   x-bind:style="{ fontSize: fontSize + 'px', height: textBoxHeight }"
                                                   placeholder="Click to edit"
                                                   class="input input-ghost bg-opacity-0 w-full max-w-xs text-center self-center text-3xl placeholder-gray-200 resize-none overflow-hidden"
+                                                  id="families.{{$current_family}}.family_members.{{$family_member}}.name"
                                                   wire:model.blur="families.{{$current_family}}.family_members.{{$family_member}}.name">
                                         </textarea>
                                     </label>
@@ -119,6 +120,7 @@
                                             x-bind:style="{ fontSize: verso__fontSize + 'px', height: verso__textBoxHeight }"
                                             placeholder="Click to edit"
                                             class="verso-textbox input input-ghost bg-opacity-0 w-full max-w-xs text-center self-center text-3xl placeholder-gray-200 resize-none overflow-hidden"
+                                            id="verso_text_families.{{$current_family}}.family_members.{{$family_member}}"
                                             wire:model.debounce.500ms="verso_text">
                                         </textarea>
                                     </label>
