@@ -6,6 +6,9 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
+        fontFamily: {
+            'logo': ['Gochi Hand', 'system-ui'],
+        },
         extend: {},
     },
     plugins: [require("daisyui")],

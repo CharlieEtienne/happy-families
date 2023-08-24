@@ -129,3 +129,61 @@ div[id^=font-picker] ul li button.active-font {
     --tw-placeholder-opacity: 1;
     color: rgb(75 85 99 / var(--tw-placeholder-opacity));
 }
+
+
+.box-gradient-shadow-custom:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #000000 0%, #000000 0% );
+    transform: translate3d(0px, 3rem, 0) scale(0.94);
+    filter: blur(10px);
+    opacity: 0.3;
+    transition: opacity 0.3s;
+    height: 10px;
+    border-radius: 100%;
+}
+
+/*
+* Prevents issues when the parent creates a
+* stacking context. (For example, using the transform
+* property )
+*/
+.box-gradient-shadow-custom::after,
+.box-gradient-shadow-custom-sidebar::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.box-gradient-shadow-custom-sidebar::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #000000 0%, #000000 0% );
+    transform: translate3d(1rem, 0, 0) scale(0.94);
+    filter: blur(10px);
+    opacity: 0.2;
+    transition: opacity 0.3s;
+    border-radius: 3rem;
+}
+
+.w-\[130px\] {
+    width: 130px;
+    min-width: 130px;
+    max-width: 130px;
+}

@@ -8,7 +8,8 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=nunito:400,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=nunito:400,600,800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=gochi-hand:400" rel="stylesheet" />
 
         <!-- Styles -->
         @vite(['resources/js/app.js', 'resources/css/app.css'])
@@ -22,12 +23,12 @@
                 </label>
             </div>
             <div class="navbar-center">
-                <a class="btn btn-ghost normal-case text-xl">happy families</a>
+                <a class="btn btn-ghost normal-case text-2xl font-logo">happy families</a>
             </div>
             <div class="navbar-end"></div>
         </div>
 
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:text-white dark:bg-gray-900 selection:bg-red-500 selection:text-white p-4">
+        <div class="relative min-h-screen bg-dots-darker bg-center bg-gray-100 dark:text-white dark:bg-gray-900 selection:bg-red-500 selection:text-white pb-4">
             <livewire:families/>
         </div>
 
