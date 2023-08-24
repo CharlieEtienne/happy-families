@@ -28,7 +28,7 @@
             <div class="navbar-end"></div>
         </div>
 
-        <div class="relative min-h-screen bg-dots-darker bg-center bg-gray-100 dark:text-white dark:bg-gray-900 selection:bg-red-500 selection:text-white pb-4">
+        <div class="relative min-h-screen bg-dots-darker bg-center bg-gray-100 dark:text-white dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             <livewire:families/>
         </div>
 

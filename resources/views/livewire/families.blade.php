@@ -184,7 +184,7 @@
             </div>
 
             {{-- Font family setting --}}
-            <div class="flex mt-2 items-center">
+            <div class="flex mt-2 items-center relative z-50">
                 <label for="border-radius" class="label w-[130px]">
                     <span class="label-text">Font family</span>
                 </label>
