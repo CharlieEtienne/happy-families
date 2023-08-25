@@ -1,11 +1,26 @@
 @tailwind base;
 @tailwind components;
+
+.borderdashed {
+    border: 2px dashed rgba(0,0,0,0.1);
+}
+
 @tailwind utilities;
 
 @layer base {
     html {
         font-family: Nunito, system-ui, sans-serif;
     }
+}
+
+/* Make sure it prints background graphics */
+* {
+    -webkit-print-color-adjust: exact;   /* Chrome, Safari 6 – 15.3, Edge */
+    color-adjust: exact;                 /* Firefox 48 – 96 */
+    print-color-adjust: exact;           /* Firefox 97+, Safari 15.4+ */
+}
+@page {
+    margin: 0;
 }
 
 div[id^=font-picker] {
