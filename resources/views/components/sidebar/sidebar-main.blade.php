@@ -6,6 +6,7 @@
             <svg class="fill-current group-hover:scale-125 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
         </label>
     </div>
+
     <x-cool-underline-title :type="'h2'" class="text-xl text-primary font-extrabold text-center mb-6">Settings</x-cool-underline-title>
 
     {{-- Number of families --}}
@@ -96,5 +97,14 @@
             </div>
         @endfor
     </form>
+
+    {{-- Display badges? --}}
+    <div class="flex mt-2 items-center">
+        <label for="display_badges" class="label w-[130px]">
+            <span class="label-text">Show names list?</span>
+        </label>
+        <input id="display_badges" type="checkbox" class="toggle toggle-primary toggle-sm" x-model="display_badges" checked />
+    </div>
+
 
 </div>

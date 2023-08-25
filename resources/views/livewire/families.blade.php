@@ -17,7 +17,7 @@
                 <label for="my-drawer-2" class="drawer-overlay"></label>
 
                 <!-- Sidebar content -->
-                @include('components.sidebar.main')
+                @include('components.sidebar.sidebar-main')
 
             </div>
 

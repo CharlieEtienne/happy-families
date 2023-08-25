@@ -1,6 +1,6 @@
 <!-- === === === === === === Cool underline title component === === === === === === -->
 <{{ $type }} {{ $attributes }}>
-    <span class="relative inline-block stroke-current">
+<span class="relative inline-block stroke-current">
         {{$slot}}
         <svg class="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg"
              preserveAspectRatio="none">

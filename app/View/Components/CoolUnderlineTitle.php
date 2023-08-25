@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\sidebar;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class main extends Component
+class CoolUnderlineTitle extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class main extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.sidebar.main');
+        return view('components.cool-underline-title');
     }
 }
