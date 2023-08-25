@@ -11,7 +11,7 @@ const fontPicker = new FontPicker(
 /**
  * Calculate font size and textarea height automagically
  */
-window.calculateSizeAndHeight = function (textBox, textLength, shortTextLimit, minFontSize, maxFontSize, coefficient, defaultFontSize) {
+window.calculateSizeAndHeight = (textBox, textLength, shortTextLimit, minFontSize, maxFontSize, coefficient, defaultFontSize) => {
     let fontSize, textBoxHeight;
 
     if (textLength > shortTextLimit) {
@@ -27,4 +27,29 @@ window.calculateSizeAndHeight = function (textBox, textLength, shortTextLimit, m
     }
 
     return { fontSize, textBoxHeight };
-}
+};
+
+/**
+ * Make a fixed div float when next to footer
+ * @param {HTMLElement} floatingElement
+ * @param {HTMLElement} footerElement
+ * @param {int} offset
+ */
+window.makeItFloat = (floatingElement, footerElement, offset = 10) => {
+
+    if ( !floatingElement || !footerElement ){
+        console.log("Invalid or missing method parameters in makeItFloat method");
+        return;
+    }
+    const getRectTop   = el => {
+        const rect = el.getBoundingClientRect();
+        return rect.top;
+    };
+    const getScrollTop = () => document.body.scrollTop;
+
+    if((getRectTop(floatingElement) + getScrollTop()) + floatingElement.offsetHeight >= (getRectTop(footerElement) + getScrollTop()) - offset)
+        floatingElement.style.position = 'absolute';
+    if(getScrollTop() + window.innerHeight < (getRectTop(footerElement) + getScrollTop()))
+        floatingElement.style.position = 'fixed'; // restore when you scroll up
+
+};

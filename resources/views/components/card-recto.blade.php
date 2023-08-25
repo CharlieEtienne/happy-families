@@ -25,11 +25,13 @@
 
         <!-- Badges -->
         <div class="card-actions overflow-hidden">
-            @for ($members_pill = 1; $members_pill <= $members_per_family; $members_pill++)
-                <div class="badge bg{{$current_family}}-alt border-white text-white overflow-hidden h-auto max-w-full inline-block whitespace-nowrap overflow-ellipsis text-xs">
-                    {{$families[$current_family]['family_members'][$members_pill]['name'] ?? "Name #" . $members_pill}}
-                </div>
-            @endfor
+            <div x-show="display_badges">
+                @for ($members_pill = 1; $members_pill <= $members_per_family; $members_pill++)
+                    <div class="badge bg{{$current_family}}-alt border-white text-white overflow-hidden h-auto max-w-full inline-block whitespace-nowrap overflow-ellipsis text-xs">
+                        {{$families[$current_family]['family_members'][$members_pill]['name'] ?? "Name #" . $members_pill}}
+                    </div>
+                @endfor
+            </div>
         </div>
 
     </div>

@@ -103,7 +103,7 @@
         <label for="display_badges" class="label w-[130px]">
             <span class="label-text">Show names list?</span>
         </label>
-        <input id="display_badges" type="checkbox" class="toggle toggle-primary toggle-sm" x-model="display_badges" checked />
+        <input id="display_badges" type="checkbox" class="toggle toggle-primary toggle-sm ml-4" x-model="display_badges" checked />
     </div>
 
 

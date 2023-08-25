@@ -71,6 +71,7 @@ div[id^=font-picker] ul li button:hover, div[id^=font-picker] ul li button:focus
 }
 div[id^=font-picker] ul li button.active-font {
     background: hsl(var(--p) / 1) !important;
+    color: #fff;
 }
 
 .cards-container.colorful .bg1{background-color:  #f59e0b;} /* bg-amber-500 */

@@ -23,6 +23,8 @@
 
         </div>
 
+        @include('components.print-btn')
+
         <script>
             document.addEventListener('alpine:init', () => {
                 // Root div data
@@ -31,6 +33,7 @@
                     radius:                 16,
                     font:                   'Nunito',
                     theme:                  'colorful',
+                    display_badges:         true,
                     verso:                  false,
                     verso__defaultFontSize: 24,
                     verso__fontSize:        this.defaultFontSize,
@@ -39,17 +42,24 @@
                     verso__maxFontSize:     36,
                     verso__coefficient:     0.5,
                     verso__shortTextLimit:  14,
+                    makeItFloat(event){
+                        window.makeItFloat(
+                            document.getElementById('printBtn'),
+                            document.getElementById('footer'),
+                            40
+                        );
+                    }
                 }) );
 
                 // Textboxes data and methods
-                Alpine.data('textResize', (side) => ({
+                Alpine.data( 'textResize', (side) => ({
                     defaultFontSize: 24,
-                    fontSize: this.defaultFontSize,
-                    textBoxHeight: 'auto',
-                    minFontSize: 16,
-                    maxFontSize: 36,
-                    coefficient: 0.5,
-                    shortTextLimit: 14,
+                    fontSize:        this.defaultFontSize,
+                    textBoxHeight:   'auto',
+                    minFontSize:     16,
+                    maxFontSize:     36,
+                    coefficient:     0.5,
+                    shortTextLimit:  14,
 
                     /**
                      * Handle resizing of recto or verso side textareas
