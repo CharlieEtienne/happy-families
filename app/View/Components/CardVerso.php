@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class card-recto extends Component
+class CardVerso extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class card-recto extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.card-recto');
+        return view('components.card-verso');
     }
 }
