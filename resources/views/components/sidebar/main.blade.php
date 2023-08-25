@@ -1,3 +1,4 @@
+<!-- === === === === === === Sidebar component === === === === === === -->
 <div class="px-8 py-4 pb-12 bg-gray-100 dark:bg-gray-800 max-w-md shadow-[0_0_10px_0_rgba(0,0,0,0.3)]">
 
     <div class="flex w-full justify-end">

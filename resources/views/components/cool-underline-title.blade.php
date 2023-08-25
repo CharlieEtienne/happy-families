@@ -1,3 +1,4 @@
+<!-- === === === === === === Cool underline title component === === === === === === -->
 <{{ $type }} {{ $attributes }}>
     <span class="relative inline-block stroke-current">
         {{$slot}}

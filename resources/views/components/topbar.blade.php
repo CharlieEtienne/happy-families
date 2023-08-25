@@ -1,3 +1,4 @@
+<!-- === === === === === === Topbar component === === === === === === -->
 <div class="print:hidden topbar flex py-2 flex-col items-center w-full sticky bg-gray-100 dark:bg-gray-800 z-50 top-[64px] box-gradient-shadow-custom">
     <label for="verso" class="cursor-pointer label">
                         <span class="label-text" :class="!verso ? 'text-primary mx-1 font-extrabold relative inline-block stroke-current' : ''">
