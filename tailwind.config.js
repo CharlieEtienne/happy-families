@@ -8,6 +8,7 @@ module.exports = {
     theme: {
         fontFamily: {
             'logo': ['Gochi Hand', 'system-ui'],
+            'standard': ['Nunito', 'system-ui'],
         },
         extend: {},
     },
@@ -27,6 +28,6 @@ module.exports = {
                 "base-200": "#111827"
             }
         }],
-        darkTheme: "synthwave"
+        darkTheme: "dark"
     },
 }

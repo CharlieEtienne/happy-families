@@ -58,7 +58,7 @@
                     fontSize:        this.defaultFontSize,
                     textBoxHeight:   'auto',
                     minFontSize:     16,
-                    maxFontSize:     36,
+                    maxFontSize:     28,
                     coefficient:     0.5,
                     shortTextLimit:  14,
 

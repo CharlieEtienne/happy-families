@@ -83,7 +83,7 @@
 
     <div class="separator"></div>
 
-    <x-cool-underline-title :type="'h3'" class="menu-title p-0 mb-2 text-md">Families</x-cool-underline-title>
+    <x-cool-underline-title :type="'h3'" class="menu-title p-0 mb-2 text-base">Families</x-cool-underline-title>
 
     <form wire:submit>
         @for ($current_family = 1; $current_family <= $families_count; $current_family++)
@@ -102,7 +102,7 @@
 
     <div class="separator"></div>
 
-    <x-cool-underline-title :type="'h3'" class="menu-title p-0 mb-2 text-md">Other settings</x-cool-underline-title>
+    <x-cool-underline-title :type="'h3'" class="menu-title p-0 mb-2 text-base">Other settings</x-cool-underline-title>
 
     {{-- Display badges? --}}
     <div class="flex mt-2 items-center">
