@@ -1,9 +1,9 @@
 <div id="livewire-root-tag">
     <div x-data="app" id="alpine-main-data">
 
-        <div class="drawer lg:drawer-open lg:auto-cols-auto">
+        <div class="drawer lg:drawer-open lg:auto-cols-auto bg-base-100">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="print:w-full drawer-content flex flex-col items-center justify-center w-[97vw] lg:w-[calc(100vw-26rem)]">
+            <div class="print:w-full drawer-content flex flex-col items-center justify-center w-full lg:w-[calc(100vw-26rem)]">
 
                 <!-- Top Bar -->
                 @include('components.topbar')
@@ -13,7 +13,7 @@
 
             </div>
 
-            <div class="print:hidden drawer-side z-50 sm:shadow-[0_0_10px_0_rgba(0,0,0,0.3)]">
+            <div class="print:hidden drawer-side z-[100] lg:z-50 sm:shadow-[0_0_10px_0_rgba(0,0,0,0.3)]" style="scroll-behavior: smooth; scroll-padding-top: 5rem;">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
 
                 <!-- Sidebar content -->
@@ -34,6 +34,7 @@
                     font:                   'Nunito',
                     theme:                  'colorful',
                     display_badges:         true,
+                    display_photo:          true,
                     verso:                  false,
                     verso__defaultFontSize: 24,
                     verso__fontSize:        this.defaultFontSize,

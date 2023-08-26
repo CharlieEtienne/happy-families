@@ -1,7 +1,7 @@
 <!-- === === === === === === Sidebar component === === === === === === -->
-<div class="px-8 py-4 pb-12 bg-gray-100 dark:bg-gray-800 max-w-md shadow-[0_0_10px_0_rgba(0,0,0,0.3)]">
+<div class="px-8 py-4 pb-12 bg-base-100 max-w-md shadow-[0_0_10px_0_rgba(0,0,0,0.3)]">
 
-    <div class="flex w-full justify-end">
+    <div class="flex w-full justify-end lg:hidden">
         <label for="my-drawer-2" class="group absolute cursor-pointer p-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-900 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
             <svg class="fill-current group-hover:scale-125 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
         </label>
@@ -81,7 +81,9 @@
         <span class="label-text ml-3" x-text="padding + 'px'"></span>
     </div>
 
-    <x-cool-underline-title :type="'h3'" class="text-lg text-gray-600 font-extrabold mt-6 mb-2">Families</x-cool-underline-title>
+    <div class="separator"></div>
+
+    <x-cool-underline-title :type="'h3'" class="menu-title p-0 mb-2 text-md">Families</x-cool-underline-title>
 
     <form wire:submit>
         @for ($current_family = 1; $current_family <= $families_count; $current_family++)
@@ -98,12 +100,24 @@
         @endfor
     </form>
 
+    <div class="separator"></div>
+
+    <x-cool-underline-title :type="'h3'" class="menu-title p-0 mb-2 text-md">Other settings</x-cool-underline-title>
+
     {{-- Display badges? --}}
     <div class="flex mt-2 items-center">
         <label for="display_badges" class="label w-[130px]">
             <span class="label-text">Show names list?</span>
         </label>
         <input id="display_badges" type="checkbox" class="toggle toggle-primary toggle-sm ml-4" x-model="display_badges" checked />
+    </div>
+
+    {{-- Display photo? --}}
+    <div class="flex mt-2 items-center">
+        <label for="display_photo" class="label w-[130px]">
+            <span class="label-text">Show image?</span>
+        </label>
+        <input id="display_photo" type="checkbox" class="toggle toggle-primary toggle-sm ml-4" x-model="display_photo" checked />
     </div>
 
 

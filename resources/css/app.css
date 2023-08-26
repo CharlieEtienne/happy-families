@@ -5,6 +5,12 @@
     border: 2px dashed rgba(0,0,0,0.1);
 }
 
+.separator {
+    background-color: hsl(var(--bc)/.1);
+    margin: 1rem 0;
+    height: 1px;
+}
+
 @tailwind utilities;
 
 @layer base {

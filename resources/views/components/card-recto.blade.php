@@ -8,6 +8,17 @@
             {{$family_name = $families[$current_family]['name'] ?? "Family #" . $current_family}}
         </h2>
 
+        <!-- Recto card image -->
+        <label for="photo" class="avatar justify-center" x-show="display_photo">
+            <div class="w-20 rounded-full ring ring-white ring-offset-base-100 ring-offset-2">
+                <img src="{{ $photo?->temporaryUrl() ?? 'https://avatars.githubusercontent.com/u/9772943?v=4' }}" />
+            </div>
+        </label>
+
+        <input class="hidden" id="photo" type="file" wire:model="photo">
+
+        @error('photo') <span class="error">{{ $message }}</span> @enderror
+
         <!-- Recto card name -->
         <label>
             <textarea

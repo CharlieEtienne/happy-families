@@ -1,5 +1,5 @@
 <!-- === === === === === === Topbar component === === === === === === -->
-<div class="print:hidden topbar flex py-2 flex-col items-center w-full sticky bg-gray-100 dark:bg-gray-800 z-50 top-[64px] box-gradient-shadow-custom">
+<div class="print:hidden topbar flex py-2 flex-col items-center w-full sticky bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content z-50 top-[64px] shadow-md">
     <label for="verso" class="cursor-pointer label">
         <span class="label-text" :class="!verso ? 'text-primary mx-1 font-extrabold relative inline-block stroke-current' : ''">
             Recto
