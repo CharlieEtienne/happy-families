@@ -11,6 +11,56 @@
     height: 1px;
 }
 
+/* Photo upload progress bar */
+.photo-upload progress[value] {
+    --background:
+        radial-gradient(50% 50%,var(--c) 98%,#0000) top/10% 10% no-repeat,
+        conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    position: absolute;
+    inset: -4px;
+    height: calc(100% + 8px);
+    width: calc(100% + 8px);
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--background);
+    -webkit-mask: radial-gradient(50% 50%,#0000 79%,#000 80% 100%,#0000 102%)
+}
+.photo-upload progress[value]::-webkit-progress-bar {
+    background: var(--background);
+}
+.photo-upload progress[value]::-webkit-progress-value {
+    background: #0000;
+}
+.photo-upload progress[value]::-moz-progress-bar {
+    background: #0000;
+}
+
+.photo-upload {
+    --w: 100px;    /* the width*/
+    --c: #e779c1;  /* the color */
+
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-grid;
+    place-content: center;
+    width: var(--w);
+    aspect-ratio: 1;
+    position: relative;
+}
+.photo-upload::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    inset: 45%;
+    background: var(--c);
+    transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+
 @tailwind utilities;
 
 @layer base {

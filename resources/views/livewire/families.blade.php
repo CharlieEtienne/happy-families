@@ -1,5 +1,5 @@
 <div id="livewire-root-tag">
-    <div x-data="app" id="alpine-main-data">
+    <div x-data="app" x-cloak id="alpine-main-data">
 
         <div class="drawer lg:drawer-open lg:auto-cols-auto bg-base-100">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />

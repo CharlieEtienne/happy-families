@@ -1,6 +1,6 @@
 <!-- === === === === === === Cards component === === === === === === -->
 <div class="print:p-0 print:overflow-hidden p-8 bg-white h-full w-full overflow-x-scroll">
-    {{-- <button wire:click="generate()">DEBUG</button> --}}
+     {{-- <button wire:click="generate()">DEBUG</button> --}}
 
     <!-- Recto -->
     <div class="print:py-0 print:w-auto print:border-none print:my-[0.505cm] w-[21cm] borderdashed cards-container recto grid grid-cols-3 gap-[1.01cm_0cm] mx-auto apply-font bg-white p-4 justify-items-center"
